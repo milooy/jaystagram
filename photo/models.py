@@ -4,9 +4,11 @@ from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse_lazy
 from django.db import models
+from django.conf import settings
 
 
 class Photo(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     image_file = models.ImageField(upload_to='%Y/%m/%d')
     filtered_image = models.ImageField(upload_to='%Y/%m/%d') #뭔가 얘때매 pip install Pillow를 했는데 다른곳에 추가 안해도 되나
     description = models.TextField(max_length=500)

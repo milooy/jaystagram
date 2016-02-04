@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {{ current_user }}님의 프로필 페이지
+
+    <ul>
+    {% for photo in photos %}
+        <li><img src="{{ photo.image_file.url }}"/></li>
+    {% empty %}
+        <li>게시할 사진이 없습니다</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

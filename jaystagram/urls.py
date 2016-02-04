@@ -18,6 +18,7 @@ from django.contrib import admin
 from photo import views as photo_views
 from django.conf import settings
 from django.conf.urls.static import static
+from profiles.urls import urlpatterns as profile_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,7 +27,8 @@ urlpatterns = [
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login', kwargs={
         'template_name': 'login.html'
     }),
-    url(r'^accounts/logout/', 'django.contrib.auth.views.logout', name='logout')
+    url(r'^accounts/logout/', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^user/', include(profile_urls, namespace='profiles')),
 ]
 if settings.DEBUG:
     urlpatterns += static(
