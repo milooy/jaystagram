@@ -1,0 +1,9 @@
+{%  extends 'layout.html' %}
+
+{% block content %}
+<form method="POST" action="{% url 'new_photo' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p><input type="submit"/></p>
+</form>
+{% endblock %}
